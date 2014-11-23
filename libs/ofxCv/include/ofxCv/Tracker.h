@@ -271,11 +271,20 @@ namespace ofxCv {
 	unsigned int Tracker<T>::getLabelFromIndex(unsigned int i) const {
 		return currentLabels[i];
 	}
+
 	
+	//////////////////////////// loudcube modified
+//	template <class T>
+//	int Tracker<T>::getIndexFromLabel(unsigned int label) const {
+//		return getCurrent(label).getIndex();
+//	}
+
 	template <class T>
 	int Tracker<T>::getIndexFromLabel(unsigned int label) const {
-		return getCurrent(label).getIndex();
+		return previousLabelMap.find(label)->second->getIndex();
 	}
+	//////////////////////////////
+
 	
 	template <class T>
 	const T& Tracker<T>::getPrevious(unsigned int label) const {
